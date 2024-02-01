@@ -1,0 +1,30 @@
+<!-- <div class="bg-primary one"></div>
+
+<p>{{formData}}</p> -->
+
+<div class="wrapper">
+    <form [formGroup]="form" class="conta">
+
+        <!-- <ng-template ngFor let-field [ngForOf]="formData.fields">
+    
+            <div class="">
+              <label>{{ field.label }}</label>
+              <input [type]="field.type" [formControlName]="field.name" />
+          
+              <div class="req" *ngIf="form.get(field.name)?.hasError('required')">
+                *
+              </div>
+            </div>
+    
+          </ng-template>
+    
+        <button type="submit">Submit</button> -->
+        <app-form-field [form]="form" [formData]="formData"></app-form-field>
+    
+      </form>
+    
+    
+      <p>{{this.form.value | json}} </p>
+</div>
+
+  

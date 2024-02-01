@@ -1,0 +1,18 @@
+{
+    
+    "fields":[
+
+        {"type":"text",
+        "name":"firstName",
+        "label":"First Name",
+        "value":"",
+        "required":true},
+        
+        {"type":"text",
+        "name":"lastName",
+        "label":"Last Name",
+        "value":"",
+        "required":true}
+
+    ]
+}

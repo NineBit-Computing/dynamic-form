@@ -1,0 +1,11 @@
+
+.wrapper{
+    width: 250px;
+    height: auto;
+}
+
+.conta{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

@@ -1,0 +1,44 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <ng-template #feildTemplate let-field="field">
+
+        <div class="">
+
+            <div>
+                <label>{{ field.label }}</label>
+                <span class="req" *ngIf="field.required">
+                    *
+                </span>
+            </div>
+
+            <input [type]="field.type" [formControlName]="field.name" />
+            
+            <!-- <div *ngIf="form.get(field.name)?.hasError('required') && form.get(field.name)?.touched">
+                Required field is essential.
+              </div> -->
+
+              <div *ngIf="form.get(field.name)!.hasError('required') && form.get(field.name)!.touched">
+                {{ field.label }} is required.
+              </div>
+
+              
+                <!-- <div *ngIf="field.name.errors?.required">Please provide url></div>
+                <div *ngIf="field.name.errors?.pattern">Please provide valid url></div> -->
+             
+
+           
+
+        </div>
+
+    </ng-template>
+
+    <div *ngFor="let field of formData.fields">
+        <ng-container *ngTemplateOutlet="feildTemplate; context: { field: field }"></ng-container>
+    </div>
+
+    <button class="btn btn-primary my-2" type="submit" [disabled]="!form.valid">Submit</button>
+    
+
+</form>
+
+
