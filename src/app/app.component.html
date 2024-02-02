@@ -1,30 +1,24 @@
-<!-- <div class="bg-primary one"></div>
-
-<p>{{formData}}</p> -->
-
-<div class="wrapper">
-    <form [formGroup]="form" class="conta">
-
-        <!-- <ng-template ngFor let-field [ngForOf]="formData.fields">
-    
-            <div class="">
-              <label>{{ field.label }}</label>
-              <input [type]="field.type" [formControlName]="field.name" />
-          
-              <div class="req" *ngIf="form.get(field.name)?.hasError('required')">
-                *
-              </div>
-            </div>
-    
-          </ng-template>
-    
-        <button type="submit">Submit</button> -->
-        <app-form-field [form]="form" [formData]="formData"></app-form-field>
-    
-      </form>
-    
-    
-      <p>{{this.form.value | json}} </p>
-</div>
+<div class="conty">
 
   
+  
+
+  <div class="wrapper" [ngClass]="{ 'flipped': isFlipped, 'shake': shake }">
+
+
+    <div class="conta" >
+  
+      <app-form-field [form]="form" [formData]="formData" (submitClicked)="onChildSubmit()"></app-form-field>
+    
+    </div>
+  
+    <div class="flip">
+      <span>Congratulations!</span>
+      <span> You've Successfully Logged In!</span>
+    </div>
+  
+    
+    
+      <!-- <p>{{this.form.value | json}} </p> -->
+  </div>
+</div>

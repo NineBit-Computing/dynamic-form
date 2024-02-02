@@ -1,4 +1,37 @@
-.req{
-    color: red;
-    font-weight: 900;
+.req {
+  color: red;
+  font-weight: 900;
+}
+.error {
+  color: red;
+  font-weight: 600;
+  padding: 3px;
+  font-size: small;
+}
+.generator {
+  display: flex;
+  flex-direction: column;
+  padding-left: 55px;
+  margin-bottom: 10px;
+}
+.input {
+  background-color: black;
+  color: blanchedalmond;
+  width: 350px;
+  border-style: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+.btn {
+  margin-top: 20px;
+  margin-left: 55px;
+  font-weight: 600;
+  cursor: pointer;
+  color: black;
+  /* background-color: white; */
+}
+
+label {
+  color: black;
+  margin-bottom: 5px;
 }

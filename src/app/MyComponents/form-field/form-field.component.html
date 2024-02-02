@@ -1,32 +1,27 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="conta">
 
     <ng-template #feildTemplate let-field="field">
 
-        <div class="">
+        <div class="generator">
 
             <div>
                 <label>{{ field.label }}</label>
-                <span class="req" *ngIf="field.required">
-                    *
-                </span>
+                <span class="req" *ngIf="field.required"> * </span>
             </div>
+            <input class="input" [type]="field.type" [formControlName]="field.name" />
 
-            <input [type]="field.type" [formControlName]="field.name" />
-            
-            <!-- <div *ngIf="form.get(field.name)?.hasError('required') && form.get(field.name)?.touched">
-                Required field is essential.
-              </div> -->
+            <div class="error"
+                *ngIf="form.get(field.name)?.hasError('pattern') && !form.get(field.name)?.hasError('required')">
 
-              <div *ngIf="form.get(field.name)!.hasError('required') && form.get(field.name)!.touched">
-                {{ field.label }} is required.
-              </div>
+                <span *ngIf="field.pattern === 'alphabetic'">
+                    Please enter valid alphabetic characters.
+                </span>
 
-              
-                <!-- <div *ngIf="field.name.errors?.required">Please provide url></div>
-                <div *ngIf="field.name.errors?.pattern">Please provide valid url></div> -->
-             
+                <span *ngIf="field.pattern === 'numeric'">
+                    Please enter a valid numerical value
+                </span>
 
-           
+            </div>
 
         </div>
 
@@ -36,9 +31,8 @@
         <ng-container *ngTemplateOutlet="feildTemplate; context: { field: field }"></ng-container>
     </div>
 
-    <button class="btn btn-primary my-2" type="submit" [disabled]="!form.valid">Submit</button>
-    
+    <button class="btn btn-outline-warning" type="submit">
+        Submit
+    </button>
 
 </form>
-
-

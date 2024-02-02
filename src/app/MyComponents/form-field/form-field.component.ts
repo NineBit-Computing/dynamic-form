@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, input } from '@angular/core';
+import { Component, EventEmitter, Input, input ,Output} from '@angular/core';
 import { FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AppComponent } from '../../app.component';
 
@@ -18,12 +18,11 @@ export class FormFieldComponent {
   @Input()
   form!: FormGroup;
 
-  // form!: FormGroup;
+  @Output() submitClicked = new EventEmitter<void>();
 
+  // form!: FormGroup;
   onSubmit() {
     console.log(this.form.value);
+    this.submitClicked.emit();
   }
-
-   
-  
 }

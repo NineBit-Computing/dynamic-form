@@ -5,4 +5,5 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    /* background-image: linear-gradient(rgb(255, 205, 112), rgb(255, 205, 144)); */
 }

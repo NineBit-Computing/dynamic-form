@@ -13,7 +13,7 @@ import { FormFieldComponent } from './MyComponents/form-field/form-field.compone
 })
 export class AppComponent implements OnInit {
   form!: FormGroup;
-
+  // isFlipped = false;
   
   formData = {
     "fields": [
@@ -23,7 +23,8 @@ export class AppComponent implements OnInit {
         "label": "First Name",
         "value": "",
         "required": true,
-        "validation": "/^[a-zA-Z ]*$/"
+        "validation": /^[a-zA-Z ]+$/,
+        "pattern": "alphabetic"
       },
       {
         "type": "text",
@@ -37,7 +38,17 @@ export class AppComponent implements OnInit {
         "name": "lastName",
         "label": "last Name",
         "value": "",
-        "required": true
+        "required": true,
+        "validation": /^[a-zA-Z ]+$/
+      },
+      {
+        "type": "text",
+        "name": "pinCode",
+        "label": "Pin Code",
+        "value": "",
+        "required": true,
+        "validation": /^[0-9]/,
+        "pattern": "numeric"
       },
       {
         "type":"password",
@@ -45,10 +56,25 @@ export class AppComponent implements OnInit {
         "label": "Password",
         "value": "",
         "required": true,
-        "button": "LogIn"
+      },
+      {
+        "type":"password",
+        "name": "pass",
+        "label": "Password",
+        "value": "",
+        "required": true,
+      },
+      {
+        "type":"password",
+        "name": "pass",
+        "label": "Password",
+        "value": "",
+        "required": true,
       }
       
   ]};
+  isFlipped: any;
+  shake = false;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -56,43 +82,35 @@ export class AppComponent implements OnInit {
     
     this.form = this.formBuilder.group({});
 
+    // this.formData.fields.forEach(field => {
+    //   const validators = field.required ? [Validators.required] : [];
+    //   this.form.addControl(field.name, this.formBuilder.control(field.value, validators));
+    // });
+
     this.formData.fields.forEach(field => {
-      const validators = field.required ? [Validators.required] : [];
+      const validators = field.required ? (field.validation ? [Validators.required,
+         Validators.pattern(field.validation)] : [Validators.required]) : [];
+      
       this.form.addControl(field.name, this.formBuilder.control(field.value, validators));
     });
-
-  //   this.formData.fields.forEach(field => {
-  //     const validators = [];
-
-  //     if (field.required) {
-  //       validators.push(Validators.required);
-  //     }
-
-  //     if (field.validation) {
-  //       validators.push(Validators.pattern(field.validation));
-  //     }
-
-  //     const control = this.formBuilder.control(field.value, validators);
-
-  //     control.valueChanges.subscribe(value => {
-  //       if (field.required && !value.trim()) {
-  //         control.setErrors({ required: true });
-  //       } else if (field.validation && !new RegExp(field.validation).test(value)) {
-  //         control.setErrors({ pattern: true });
-  //       } else {
-  //         control.setErrors(null);
-  //       }
-  //     });
-
-  //     this.form.addControl(field.name, control);
-  //   });
-  // }
-  // }
-  // this.form = this.formBuilder.group({
-  //   name: ['', [Validators.required, Validators.pattern('(/^[a-zA-Z ]*$/')]]
-  // })
- 
  
   } 
+  onChildSubmit() {
 
+    if (this.form.valid) {
+      
+      this.isFlipped = !this.isFlipped; // Flip the wrapper
+    }
+    if (this.form.invalid) {
+      
+      this.shake = true;
+      setTimeout(() => {
+        this.shake = false;
+      }, 1000);
+      return;
+    }
+  }
+
+ 
 }
+
