@@ -1,5 +1,5 @@
 .conty {
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
   display: flex;
   align-items: center;
@@ -9,15 +9,15 @@
 
 .wrapper {
   width: 550px;
-  min-height: 550px;
+  /* min-height: 450px; */
   background: rgba(0, 0, 0, 0.8);
   border-radius: 5px;
   padding: 40px;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.8);
   transition: transform 2s;
   transform-style: preserve-3d;
-  position: relative;
+  /* position: relative; */
   background-color: #9bd4e4;
 }
 
@@ -27,9 +27,9 @@
 
 .conta,
 .flip {
-  position: absolute;
+  /* position: absolute; */
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
@@ -40,7 +40,8 @@
   color: white;
   position: relative;
   gap: 25px;
-  top: 160px;
+  /* top: 100px; */
+  bottom: 300px;
   transform: rotateY(180deg);
 }
 

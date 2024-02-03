@@ -1,24 +1,22 @@
 <div class="conty">
 
-  
-  
-
   <div class="wrapper" [ngClass]="{ 'flipped': isFlipped, 'shake': shake }">
 
 
-    <div class="conta" >
-  
+    <div class="conta">
+
       <app-form-field [form]="form" [formData]="formData" (submitClicked)="onChildSubmit()"></app-form-field>
-    
+
     </div>
-  
+
+
     <div class="flip">
       <span>Congratulations!</span>
       <span> You've Successfully Logged In!</span>
     </div>
-  
-    
-    
-      <!-- <p>{{this.form.value | json}} </p> -->
+
+
+
+    <!-- <p>{{this.form.value | json}} </p> -->
   </div>
 </div>
