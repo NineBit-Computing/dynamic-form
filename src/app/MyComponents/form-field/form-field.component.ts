@@ -1,28 +1,61 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, input ,Output} from '@angular/core';
-import { FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AppComponent } from '../../app.component';
+import { Component, Input, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule,Validators } from '@angular/forms';
+import { SchemaService } from '../../MyServices/schema.service';
 
 @Component({
   selector: 'app-form-field',
   standalone: true,
-  imports: [CommonModule,AppComponent,FormsModule,ReactiveFormsModule],
+  imports: [CommonModule,FormsModule,ReactiveFormsModule],
   templateUrl: './form-field.component.html',
-  styleUrl: './form-field.component.css'
+  styleUrls: ['./form-field.component.css']
 })
-export class FormFieldComponent {
+export class FormFieldComponent implements OnInit {
 
-  @Input()
+  isFlipped: any;
+  shake = false;
+
   formData!: any;
   
-  @Input()
   form!: FormGroup;
 
-  @Output() submitClicked = new EventEmitter<void>();
+  constructor(private formBuilder: FormBuilder,private schema:SchemaService) {}
 
-  // form!: FormGroup;
+  ngOnInit(): void {
+
+      this.form = this.formBuilder.group({});
+      this.formData = this.schema.getFormData();
+
+     
+      this.formData.fields.forEach((field: { required: any; validation: string | RegExp; name: any; value: any; }) => {
+        const validators = field.required
+          ? field.validation
+            ? [Validators.required, Validators.pattern(field.validation)]
+            : [Validators.required]
+          : [];
+  
+      this.form.addControl(
+          field.name,
+          this.formBuilder.control(field.value, validators)
+        );
+      });
+    };
+    
+  
+
   onSubmit() {
-    console.log(this.form.value);
-    this.submitClicked.emit();
+
+    console.log(this.form.value)
+
+    if (this.form.valid) {
+      this.isFlipped = !this.isFlipped; // Flip the wrapper
+    }
+    if (this.form.invalid) {
+      this.shake = true;
+      setTimeout(() => {
+        this.shake = false;
+      }, 1000);
+      return;
+    }
   }
 }

@@ -1,38 +1,55 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="conta">
+<div class="wrapper" [ngClass]="{ 'flipped': isFlipped, 'shake': shake }">
 
-    <ng-template #feildTemplate let-field="field">
+    <div class="conta">
 
-        <div class="generator">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="conta">
 
-            <div>
-                <label>{{ field.label }}</label>
-                <span class="req" *ngIf="field.required"> * </span>
+            <ng-template #feildTemplate let-field="field">
+
+                <div class="generator">
+
+                    <div>
+                        <label>{{ field.label }}</label>
+                        <span class="req" *ngIf="field.required"> * </span>
+                    </div>
+                    <input class="input" [type]="field.type" [formControlName]="field.name" />
+
+                    <div class="error"
+                        *ngIf="form.get(field.name)?.hasError('pattern') && !form.get(field.name)?.hasError('required')">
+
+                        <span *ngIf="field.pattern === 'alphabetic'">
+                            Please enter valid alphabetic characters.
+                        </span>
+
+                        <span *ngIf="field.pattern === 'numeric'">
+                            Please enter a valid numerical value
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </ng-template>
+
+            <div *ngFor="let field of formData.fields">
+                <ng-container *ngTemplateOutlet="feildTemplate; context: { field: field }"></ng-container>
             </div>
-            <input class="input" [type]="field.type" [formControlName]="field.name" />
 
-            <div class="error"
-                *ngIf="form.get(field.name)?.hasError('pattern') && !form.get(field.name)?.hasError('required')">
+            <button class="btn btn-outline-warning" type="submit">
+                Submit
+            </button>
 
-                <span *ngIf="field.pattern === 'alphabetic'">
-                    Please enter valid alphabetic characters.
-                </span>
+        </form>
 
-                <span *ngIf="field.pattern === 'numeric'">
-                    Please enter a valid numerical value
-                </span>
-
-            </div>
-
-        </div>
-
-    </ng-template>
-
-    <div *ngFor="let field of formData.fields">
-        <ng-container *ngTemplateOutlet="feildTemplate; context: { field: field }"></ng-container>
     </div>
 
-    <button class="btn btn-outline-warning" type="submit">
-        Submit
-    </button>
+    <div class="flip">
+        <span>Congratulations!</span>
+        <span> You've Successfully Logged In!</span>
+    </div>
 
-</form>
+
+
+</div>
+
+<!-- <p>{{this.form.value | json}} </p> -->
