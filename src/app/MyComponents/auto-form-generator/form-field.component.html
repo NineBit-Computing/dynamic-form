@@ -1,8 +1,8 @@
-<div class="wrapper" [ngClass]="{ 'flipped': isFlipped, 'shake': shake }">
+<div class="wrapper" [ngClass]="{ 'flipped': isFlipped, 'shake': shake }" >
 
-    <div class="conta">
+    <div class="conta" >
 
-        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="conta">
+        <form [formGroup]="form"  class="conta">
 
             <ng-template #feildTemplate let-field="field">
 
@@ -31,15 +31,15 @@
 
             </ng-template>
 
-            <div *ngFor="let field of formData.fields">
+            <div *ngFor="let field of formData.fields" >
                 <ng-container *ngTemplateOutlet="feildTemplate; context: { field: field }"></ng-container>
             </div>
 
-            <button class="btn btn-outline-warning" type="submit">
-                Submit
-            </button>
-
         </form>
+
+        <!-- <button class="btn btn-outline-warning" type="submit" (click)="onSubmit()" label="button">
+            {{buttonLabel}}
+        </button> -->
 
     </div>
 
@@ -52,4 +52,4 @@
 
 </div>
 
-<!-- <p>{{this.form.value | json}} </p> -->
+<p>{{this.form.value | json}} </p>
