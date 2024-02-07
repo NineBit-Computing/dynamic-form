@@ -1,3 +1,11 @@
+.contyi {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #cadeef;
+}
 .req {
   color: red;
   font-weight: 900;

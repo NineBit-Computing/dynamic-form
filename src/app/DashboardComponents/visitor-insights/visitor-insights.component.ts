@@ -26,7 +26,7 @@ export class VisitorInsightsComponent implements OnInit {
 
   fetchData() {
     this.httpClient
-      .get('http://192.168.1.5:9000/chart/visitor-insight/monthly')
+      .get('http://192.168.1.3:9000/chart/visitor-insight/monthly')
       .subscribe((data: any) => {
         this.result = data;
         console.log(this.result);

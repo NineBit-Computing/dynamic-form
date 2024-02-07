@@ -6,6 +6,10 @@ import { FormFieldComponent } from './MyComponents/auto-form-generator/form-fiel
 import { RouterOutlet } from '@angular/router';
 import { SchemaService } from './MyServices/schema.service';
 import { EditUserComponent } from './MyComponents/edit-user/edit-user.component';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { HttpClientModule } from '@angular/common/http';
+import { ParentComponent } from './parent/parent.component';
+
 
 @Component({
   selector: 'app-root',
@@ -17,6 +21,9 @@ import { EditUserComponent } from './MyComponents/edit-user/edit-user.component'
     FormFieldComponent,
     EditUserComponent,
     RouterOutlet,
+    HighchartsChartModule,
+    HttpClientModule,
+    ParentComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

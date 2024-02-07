@@ -3,10 +3,10 @@
     padding: 0;
     box-sizing: border-box;
   }
-  .wrapper {
-    max-width:100% ;
-    height: auto;
-    background-color: #f9fafb;
+  .wrap {
+    width:100% ;
+    /* height: auto; */
+    /* background-color: #f9fafb; */
     display: flex;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
   }
