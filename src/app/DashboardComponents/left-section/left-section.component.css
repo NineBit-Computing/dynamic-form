@@ -1,0 +1,52 @@
+ @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,500&display=swap");
+
+.left {
+  width: 21.5625rem;
+  height: 81.9375rem;
+  background: #fff;
+}
+.logo-section {
+  display: flex;
+  align-items: center;
+}
+.logo {
+  position: relative;
+  top: 50px;
+  left: 70px;
+  border-radius: 8px;
+  width: 3.5rem;
+  height: 3.5rem;
+  flex-shrink: 0;
+}
+.Dabang {
+  position: relative;
+  font-family: Poppins;
+  font-size:1.2em;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  top: 50px;
+  left: 90px;
+  color: #151d48;
+}
+.dashboard-btn {
+  position: relative;
+  display: flex;
+  top: 140px;
+  left: 35px;
+  width: 14rem;
+  height: 4rem;
+  padding: 16px 24px;
+  gap: 1rem;
+  border-radius: 16px;
+  background: #5d5fef;
+  border-radius: 16px;
+}
+.Dashboard {
+  color: #fff;
+  font-family: Poppins;
+  font-size: 1.2em;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}

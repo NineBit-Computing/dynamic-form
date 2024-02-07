@@ -1,0 +1,37 @@
+.visitor {
+  width: 37.06356rem;height: 21.75rem;
+  border-radius: 1.25rem;
+  border: 1px solid #f8f9fa;
+  background: #fff;
+  box-shadow: 0px 4px 20px 0px rgba(238, 238, 238, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.card-header {
+  width: 36.9375rem;
+  height: 4rem;
+  flex-shrink: 0;
+}
+.visitor-heading {
+  color: #05004e;
+  position: relative;
+  top: 24px;
+  left: 29px;
+  font-family: Poppins;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 2rem;
+}
+
+highcharts-chart{
+  display: block;
+  width: 100%;
+  height: 20rem;
+}
+title{
+  text-align: start;
+}
+

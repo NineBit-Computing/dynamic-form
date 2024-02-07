@@ -1,0 +1,89 @@
+.today-sales {
+  min-width: 870px;
+  height: 348px;
+  flex-shrink: 3;
+  flex-grow: 3;
+  border-radius: 1.25rem;
+  border: 1px solid #f8f9fa;
+  background: #fff;
+  box-shadow: 0px 4px 20px 0px rgba(238, 238, 238, 0.5);
+}
+.sales-heading {
+  color: #05004e;
+  position: relative;
+  font-family: Poppins;
+  font-size: 1.25em;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 2rem;
+  top: 23px;
+  left: 31px;
+}
+.sales-subhead {
+  color: #737791;
+  position: relative;
+  left: 33px;
+  font-family: Poppins;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.875rem;
+}
+.sales-btn {
+  width: 6.25rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  border-radius: 0.5rem;
+  border: 1px solid #c3d3e2;
+  position: relative;
+  top: -60px;
+  left: 745px;
+  border-radius: 8px;
+}
+.boxes{
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+  top: -20px;
+}
+.sales-box {
+  width: 11.25rem;
+  height: 11.5rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 20px;
+  justify-content: center;
+  padding-left: 20px;
+}
+.first-span{
+  color: var(--Greys-Blue-Grey-900, #151D48);
+font-family: Poppins;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 600;
+line-height: 2rem; 
+}
+.sec-span{
+  color: #425166;
+font-family: Poppins;
+font-size: 1rem;
+font-style: normal;
+font-weight: 500;
+line-height: 1.5rem; 
+}
+.third-span{
+color: #4079ED;
+font-family: Poppins;
+font-size: 0.75rem;
+font-style: normal;
+font-weight: 500;
+line-height: 1rem;
+}
+#box1{background-color: #FFE2E5;}
+#box2{background-color: #FFF4DE;}
+#box3{background-color: #DCFCE7;}
+#box4{background-color: #F3E8FF;}
+
+

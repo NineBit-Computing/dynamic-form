@@ -12,12 +12,8 @@ import { SchemaService } from '../../MyServices/schema.service';
 })
 export class FormFieldComponent implements OnInit {
 
-  //  @Input() buttonLabel: string = 'Submit';
-  //  @Output() submit = new EventEmitter();
   @Output() formSubmitted: EventEmitter<any> = new EventEmitter<any>();
   
-   
-
   isFlipped: any;
   shake = false;
 
@@ -46,8 +42,6 @@ export class FormFieldComponent implements OnInit {
         );
       });
     };
-    
-  
 
   getFormData():any {
 
@@ -55,7 +49,6 @@ export class FormFieldComponent implements OnInit {
 
     if (this.form.valid) {
       this.isFlipped = !this.isFlipped; // Flip the wrapper
-      
       return this.form;
     }
     if (this.form.invalid) {

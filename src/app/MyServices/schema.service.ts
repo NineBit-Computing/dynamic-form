@@ -37,7 +37,7 @@ export class SchemaService {
       {
         type: 'text',
         name: 'pinCode',
-        label: 'Pin Code',
+        label: 'My Pin Code',
         value: '',
         required: true,
         validation: /^[0-9]/,
