@@ -3,6 +3,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit, inject } from '@angular/core';
 import { HighchartsChartModule } from 'highcharts-angular';
 import * as Highcharts from 'highcharts/highstock';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-visitor-insights',
@@ -19,14 +20,29 @@ export class VisitorInsightsComponent implements OnInit {
     xAxis: [],
     yAxis: [],
   };
+  router: any;
+
+  constructor(private route:ActivatedRoute){}
+
+  // ngAfterViewInit():void{
+  //   this.fetchData();
+  // }
+  // ngAfterViewChecked(){
+  //   this.fetchData();
+  // }
 
   ngOnInit(): void {
-    this.fetchData();
+    
+    this.route.data.subscribe(data=>{
+      this.fetchData();
+      console.log(data)
+    })
+    this.router.events.subscribe((event: any) => console.log(event));
   }
 
   fetchData() {
     this.httpClient
-      .get('http://192.168.1.3:9000/chart/visitor-insight/monthly')
+      .get('http://192.168.1.5:9000/chart/visitor-insight/monthly')
       .subscribe((data: any) => {
         this.result = data;
         console.log(this.result);

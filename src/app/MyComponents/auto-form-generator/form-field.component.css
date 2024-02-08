@@ -22,39 +22,68 @@
   padding-left: 55px;
   margin-bottom: 10px;
 }
-.input {
+/* .input {
   background-color: black;
   color: blanchedalmond;
   width: 350px;
   border-style: none;
   border-radius: 5px;
   padding: 10px 20px;
-}
-.btn {
+} */
+/* .btn {
   margin-top: 20px;
   margin-left: 55px;
   font-weight: 600;
   cursor: pointer;
   color: black;
-  /* background-color: white; */
 }
 
 label {
   color: black;
   margin-bottom: 5px;
-}
-.wrapper {
+} */
+/* .wrapper {
   width: 500px;
   min-height: 450px;
   background: rgba(0, 0, 0, 0.8);
   border-radius: 5px;
-  padding: 25px;
+  padding: 25px; */
+/* box-sizing: border-box; */
+/* box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.8);
+  transition: transform 2s;
+  transform-style: preserve-3d;
+  /* position: relative; 
+  background-color: #9bd4e4;
+} */
+.input {
+  background-color: black;
+  color: blanchedalmond;
+  width: 340px;
+  border-style: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+label {
+  /* color: black; */
+  background-color: transparent;
+  margin-bottom: 5px;
+  color: #fff;
+}
+.wrapper {
+  min-width: 450px;
+  /* flex: 1; */
+  /* min-height: 450px; */
+  /* background: rgba(0, 0, 0, 0.8); */
+  border-radius: 5px;
+  padding-top: 35px;
+  padding-bottom: 20px;
   /* box-sizing: border-box; */
   box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.8);
   transition: transform 2s;
   transform-style: preserve-3d;
   /* position: relative; */
-  background-color: #9bd4e4;
+  /* background-color: #9bd4e4; */
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .wrapper.flipped {
@@ -81,13 +110,13 @@ label {
   transform: rotateY(180deg);
 }
 
-/* span {
+.para {
   line-height: 25px;
   font-size: x-large;
   text-align: center;
   font-weight: bold;
-  color: rgb(227, 227, 48);
-} */
+  color: rgb(2, 2, 0);
+}
 
 .wrapper.shake {
   -webkit-animation: shake 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;

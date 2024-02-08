@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { FormFieldComponent } from '../auto-form-generator/form-field.component';
 import { FormsModule, FormGroup } from '@angular/forms';
-import { SharedFormDataService } from '../../MyServices/shared-form-data.service';
+// import { SharedFormDataService } from '../../MyServices/shared-form-data.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -17,7 +17,7 @@ export class EditUserComponent implements AfterViewInit{
   @ViewChild(FormFieldComponent)
   formFieldComponent!: FormFieldComponent;
 
-  constructor(private cdr: ChangeDetectorRef,private sharedFormDataService:SharedFormDataService) {}
+  constructor(private cdr: ChangeDetectorRef) {}
  
   formData: any = {
     fName: 'james',

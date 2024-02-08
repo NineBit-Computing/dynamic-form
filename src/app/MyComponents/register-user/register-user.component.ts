@@ -1,7 +1,7 @@
 import { Component, ViewChild,Input } from '@angular/core';
 import { FormFieldComponent } from '../auto-form-generator/form-field.component';
 import { FormsModule } from '@angular/forms';
-import { SharedFormDataService } from '../../MyServices/shared-form-data.service';
+// import { SharedFormDataService } from '../../MyServices/shared-form-data.service';
 
 @Component({
   selector: 'app-register-user',
@@ -12,7 +12,7 @@ import { SharedFormDataService } from '../../MyServices/shared-form-data.service
 })
 export class RegisterUserComponent {
 
-  constructor(private sharedFormDataService:SharedFormDataService) {}
+  // constructor(private sharedFormDataService:SharedFormDataService) {}
   @ViewChild(FormFieldComponent)
   formFieldComponent!: FormFieldComponent;
 
@@ -21,7 +21,7 @@ export class RegisterUserComponent {
   onSubmit(){
 
     const form = this.formFieldComponent.getFormData()
-    this.sharedFormDataService.updateFormData(form.value);
+    // this.sharedFormDataService.updateFormData(form.value);
     
   }
 
