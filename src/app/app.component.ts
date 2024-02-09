@@ -9,6 +9,7 @@ import { EditUserComponent } from './MyComponents/edit-user/edit-user.component'
 import { HighchartsChartModule } from 'highcharts-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { ParentComponent } from './parent/parent.component';
+// import { BrowserModule } from '@angular/platform-browser';
 
 
 @Component({
@@ -23,7 +24,7 @@ import { ParentComponent } from './parent/parent.component';
     RouterOutlet,
     HighchartsChartModule,
     HttpClientModule,
-    ParentComponent
+    ParentComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

@@ -13,12 +13,11 @@ import { SchemaService } from '../../MyServices/schema.service';
 export class FormFieldComponent implements OnInit {
 
   @Output() formSubmitted: EventEmitter<any> = new EventEmitter<any>();
+  @Input() formData: any;
   
   isFlipped: any;
   shake = false;
-
-  formData!: any;
-  
+  // formData!: any;
   form!: FormGroup;
 
   constructor(private formBuilder: FormBuilder,private schema:SchemaService) {}
@@ -26,7 +25,8 @@ export class FormFieldComponent implements OnInit {
   ngOnInit(): void {
 
       this.form = this.formBuilder.group({});
-      this.formData = this.schema.getFormData();
+      // this.formData = this.schema.getFormData();
+      console.log(this.formData);
 
      
       this.formData.fields.forEach((field: { required: any; validation: string | RegExp; name: any; value: any; }) => {

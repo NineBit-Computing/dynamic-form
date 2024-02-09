@@ -1,7 +1,8 @@
-import { Component, ViewChild,Input } from '@angular/core';
+import { Component, ViewChild,Input, OnInit } from '@angular/core';
 import { FormFieldComponent } from '../auto-form-generator/form-field.component';
 import { FormsModule } from '@angular/forms';
-// import { SharedFormDataService } from '../../MyServices/shared-form-data.service';
+import { SchemaService } from '../../MyServices/schema.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-register-user',
@@ -10,12 +11,35 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './register-user.component.html',
   styleUrl: './register-user.component.css'
 })
-export class RegisterUserComponent {
+export class RegisterUserComponent implements OnInit{
 
-  // constructor(private sharedFormDataService:SharedFormDataService) {}
-  @ViewChild(FormFieldComponent)
+  formData: any = {
+    fields: []
+  };
+  router: any;
+
+  constructor(private schema:SchemaService,private route:ActivatedRoute) {
+   
+  }
+
+  @ViewChild(FormFieldComponent, { static: true })
   formFieldComponent!: FormFieldComponent;
 
+  
+
+ngOnInit(): void {
+  // this.fetch()
+  this.route.data.subscribe(data=>{
+    this.fetch();
+    console.log(data);
+  })
+  this.router.events.subscribe((event:any)=>console.log(event))
+}
+  
+  fetch(){
+    this.formData=this.schema.fetchData();
+    console.log(this.formData)
+  }
   
 
   onSubmit(){
