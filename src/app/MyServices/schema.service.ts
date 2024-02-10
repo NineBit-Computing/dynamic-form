@@ -8,16 +8,16 @@ import { Observable } from 'rxjs';
 export class SchemaService {
 
   constructor(private http:HttpClient) {}
-  apiData:any;
+  // apiData:any;
 
-  fetchData(){
-    return this.http.get('http://192.168.1.5:9000/user').subscribe((data)=>{
-      this.apiData=data;
-      console.log(this.apiData);
-    })
-  }
+  // fetchData(){
+  //   return this.http.get('http://192.168.1.5:9000/user').subscribe((data)=>{
+  //     this.apiData=data;
+  //     console.log(this.apiData);
+  //   })
+  // }
 
-  // private apiLink = 'http://192.168.1.5:9000/user';
+  private apiLink = 'http://192.168.1.6:9000/user';
 
   // formData = {
   //   fields: [
@@ -68,8 +68,8 @@ export class SchemaService {
   //   ],
   // };
 
-  // getFormData():Observable<any>{
-  //   return this.http.get<any>(this.apiLink);
-  //   // return this.formData;
-  // }
+  getFormData():Observable<any>{
+    return this.http.get<any>(this.apiLink);
+    // return this.formData;
+  }
 }

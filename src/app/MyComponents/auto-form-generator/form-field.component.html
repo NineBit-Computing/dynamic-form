@@ -1,57 +1,57 @@
 <!-- <div class="contyi"> -->
 
-    <div class="wrapper" [ngClass]="{ 'flipped': isFlipped, 'shake': shake }" >
+<div class="wrapper" [ngClass]="{ 'flipped': isFlipped, 'shake': shake }" *ngIf="formData.length>0">
 
-        <div class="conta" >
-    
-            <form [formGroup]="form"  class="conta" >
-    
-                <ng-template #feildTemplate let-field="field" >
-    
-                    <div class="generator">
-    
-                        <div>
-                            <label>{{ field.label }}</label>
-                            <span class="req" *ngIf="field.required"> * </span>
-                        </div>
-                        <input class="input" [type]="field.type" [formControlName]="field.name" />
-    
-                        <div class="error"
-                            *ngIf="form.get(field.name)?.hasError('pattern') && !form.get(field.name)?.hasError('required')">
-    
-                            <span *ngIf="field.pattern === 'alphabetic'">
-                                Please enter valid alphabetic characters.
-                            </span>
-    
-                            <span *ngIf="field.pattern === 'numeric'">
-                                Please enter a valid numerical value
-                            </span>
-    
-                        </div>
-    
+    <div class="conta">
+
+        <form [formGroup]="form" class="conta">
+
+            <ng-template #feildTemplate let-field="field">
+
+                <div class="generator">
+
+                    <div>
+                        <label>{{ field.label }}</label>
+                        <span class="req" *ngIf="field.required"> * </span>
                     </div>
-    
-                </ng-template>
-    
-                <div *ngFor="let field of formData.fields" >
-                    <ng-container *ngTemplateOutlet="feildTemplate; context: { field: field }"></ng-container>
+                    <input class="input" [type]="field.type" [formControlName]="field.name" />
+
+                    <div class="error"
+                        *ngIf="form.get(field.name)?.hasError('pattern') && !form.get(field.name)?.hasError('required')">
+
+                        <span *ngIf="field.pattern === 'alphabetic'">
+                            Please enter valid alphabetic characters.
+                        </span>
+
+                        <span *ngIf="field.pattern === 'numeric'">
+                            Please enter a valid numerical value
+                        </span>
+
+                    </div>
+
                 </div>
-    
-            </form>
-    
-            <!-- <button class="btn btn-outline-warning" type="submit" (click)="onSubmit()" label="button">
+
+            </ng-template>
+
+            <div *ngFor="let field of formData[0].fields">
+                <ng-container *ngTemplateOutlet="feildTemplate; context: { field: field }"></ng-container>
+            </div>
+
+        </form>
+
+        <!-- <button class="btn btn-outline-warning" type="submit" (click)="onSubmit()" label="button">
                 {{buttonLabel}}
             </button> -->
-    
-        </div>
-    
-        <div class="flip">
-            <span class="para">Done</span>
-        </div>
-    
-    
-    
+
     </div>
+
+    <div class="flip">
+        <span class="para">Done</span>
+    </div>
+
+
+
+</div>
 
 
 

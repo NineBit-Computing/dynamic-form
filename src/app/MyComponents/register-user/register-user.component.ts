@@ -1,54 +1,140 @@
-import { Component, ViewChild,Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormFieldComponent } from '../auto-form-generator/form-field.component';
-import { FormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  Validators,
+} from '@angular/forms';
 import { SchemaService } from '../../MyServices/schema.service';
-import { ActivatedRoute } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+  Event,
+  RouterEvent,
+  NavigationStart,
+  NavigationEnd,
+} from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-register-user',
   standalone: true,
-  imports: [FormFieldComponent,FormsModule],
+  imports: [FormFieldComponent, FormsModule],
   templateUrl: './register-user.component.html',
-  styleUrl: './register-user.component.css'
+  styleUrl: './register-user.component.css',
 })
-export class RegisterUserComponent implements OnInit{
-
+export class RegisterUserComponent implements OnInit {
   formData: any = {
-    fields: []
+    fields: [],
   };
-  router: any;
+  // router: any;
+  form: FormGroup = new FormGroup({});
 
-  constructor(private schema:SchemaService,private route:ActivatedRoute) {
-   
+  constructor(
+    private schema: SchemaService,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) {
+    this.setRouterEvent();
   }
 
-  @ViewChild(FormFieldComponent, { static: true })
-  formFieldComponent!: FormFieldComponent;
-
-  
-
-ngOnInit(): void {
-  // this.fetch()
-  this.route.data.subscribe(data=>{
+  ngOnInit(): void {
+    console.log(this.form.value);
     this.fetch();
-    console.log(data);
-  })
-  this.router.events.subscribe((event:any)=>console.log(event))
-}
-  
-  fetch(){
-    this.formData=this.schema.fetchData();
-    console.log(this.formData)
   }
-  
 
-  onSubmit(){
+  // this.router.events.subscribe((event:any)=>console.log(event))
 
-    const form = this.formFieldComponent.getFormData()
+  // setRouterEvent(){
+  //   this.router.events.pipe(
+  //     filter((e: Event | RouterEvent): e is RouterEvent => e instanceof RouterEvent)
+  //   ).subscribe((e: RouterEvent) => {
+
+  //     if (e instanceof NavigationStart) {
+  //       this.fetch();
+
+  //     }
+  //   });
+  // }
+
+  setRouterEvent() {
+    this.router.events
+      .pipe(
+        filter(
+          (e: Event | RouterEvent): e is RouterEvent => e instanceof RouterEvent
+        )
+      )
+      .subscribe((e: RouterEvent) => {
+        if (e instanceof NavigationEnd) {
+          // setTimeout(() => {
+          this.fetch();
+          // }, 2000);
+        }
+      });
+  }
+
+  fetch() {
+    // this.schema.getFormData().subscribe((data) => {
+    // this.formData = data;
+    // });
+    this.schema.getFormData().subscribe
+    // this.formData = {
+    //   fields: [
+    //     {
+    //       type: 'email',
+    //       name: 'eName',
+    //       label: 'Email',
+    //       value: '',
+    //       required: true,
+    //       validation: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+    //     },
+    //     {
+    //       type: 'text',
+    //       name: 'fName',
+    //       label: 'First Name',
+    //       value: '',
+    //       required: true,
+    //       validation: /^[a-zA-Z ]+$/,
+    //       pattern: 'alphabetic',
+    //     },
+    //     {
+    //       type: 'text',
+    //       name: 'MmiddleName',
+    //       label: 'Middle Name',
+    //       value: '',
+    //       required: false,
+    //       validation: /^[a-zA-Z ]+$/,
+    //       pattern: 'alphabetic',
+    //     },
+    //     {
+    //       type: 'text',
+    //       name: 'lastName',
+    //       label: 'last Name',
+    //       value: '',
+    //       required: true,
+    //       validation: /^[a-zA-Z ]+$/,
+    //       pattern: 'alphabetic',
+    //     },
+    //     {
+    //       type: 'text',
+    //       name: 'PpinCode',
+    //       label: 'Pin Code',
+    //       value: '',
+    //       required: true,
+    //       validation: /^[0-9]/,
+    //       pattern: 'numeric',
+    //     },
+    //   ],
+    // };
+    console.log(this.formData);
+    // });
+  }
+
+  onSubmit() {
+    // const form = this.formFieldComponent.getFormData()
     // this.sharedFormDataService.updateFormData(form.value);
-    
+    console.log(this.form.value);
   }
-
-  
-
 }

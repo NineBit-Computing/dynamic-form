@@ -13,36 +13,70 @@ import { SchemaService } from '../../MyServices/schema.service';
 export class FormFieldComponent implements OnInit {
 
   @Output() formSubmitted: EventEmitter<any> = new EventEmitter<any>();
-  @Input() formData: any;
+  @Input() formData: any={fields: [] };
+  @Input() form: FormGroup = new FormGroup({});
   
   isFlipped: any;
   shake = false;
   // formData!: any;
-  form!: FormGroup;
+  // form!: FormGroup;
 
   constructor(private formBuilder: FormBuilder,private schema:SchemaService) {}
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group({});
+    this.initializeForm();
+  }
 
-      this.form = this.formBuilder.group({});
-      // this.formData = this.schema.getFormData();
-      console.log(this.formData);
+    // if (this.formData && this.formData.length > 0 && this.formData[0].fields) {
+      
 
-     
-      this.formData.fields.forEach((field: { required: any; validation: string | RegExp; name: any; value: any; }) => {
+    //   this.formData[0].fields.forEach((field: any) => {
+    //     const validators = field.required
+    //       ? field.validation
+    //         ? [Validators.required, Validators.pattern(field.validation)]
+    //         : [Validators.required]
+    //       : [];
+
+    //     this.form.addControl(
+    //       field.name,
+    //       this.formBuilder.control(field.value, validators)
+    //     );
+    //   });
+    // }
+  //   if (this.formData && this.formData.length > 0) {
+  //     this.formData[0].fields.forEach((field: any) => {
+  //       const validators = field.required
+  //         ? field.validation
+  //           ? [Validators.required, Validators.pattern(field.validation)]
+  //           : [Validators.required]
+  //         : [];
+
+  //       this.form.addControl(
+  //         field.name,
+  //         this.formBuilder.control(field.value, validators)
+  //       );
+  //     });
+  //   }
+  // }
+  initializeForm() {
+    if (this.formData && this.formData.fields) {
+      this.formData.fields.forEach((field: any) => {
         const validators = field.required
           ? field.validation
             ? [Validators.required, Validators.pattern(field.validation)]
             : [Validators.required]
           : [];
-  
-      this.form.addControl(
+
+        this.form.addControl(
           field.name,
           this.formBuilder.control(field.value, validators)
         );
       });
-    };
+    }
+  }
 
+  
   getFormData():any {
 
     console.log(this.form.value)
